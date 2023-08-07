@@ -1,0 +1,5 @@
+torch==1.13.1+cu116
+torchio==0.18.86
+torchvision==0.14.1+cu116
+numpy==1.21.0
+nibabel==4.0.2

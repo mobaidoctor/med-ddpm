@@ -30,45 +30,90 @@ This repository houses the official implementation and pretrained model weights 
 </table>
 
 
-## Setup
+## 🛠️ Setup 
 
-The following two libraries must be installed for training and generation.
+Ensure you have the following libraries installed for training and generating images:
 
-- Torchio : [torchio](https://github.com/fepegar/torchio)
-- Nibabel : [nibabel](https://github.com/nipy/nibabel)
-
-## Training 
-
-Learning can be performed from the following code. The script is executed according to the data size 64, 128. 
-The path to the dataset folder is specified with `--inputfolder` in the script code.
-
-**Size : 128x128x128**
+- **Torchio**: [Torchio GitHub](https://github.com/fepegar/torchio)
+- **Nibabel**: [Nibabel GitHub](https://github.com/nipy/nibabel)
 
 ```
-$ ./scripts/train128.sh
+pip install -r requirements.txt
 ```
 
-## Generate Samples
+## 🚀 Run on Your Own Dataset
 
-To generate samples, run the following script The learned weight file is specified by `--weightfile`, and the mask file to be input is specified by `--inputfile`.
+Med-DDPM is versatile. If you're working with image formats other than NIfTI (.nii.gz), modify the \`read_image\` function in \`dataset.py\`.
 
-**Size : 128x128x128**
+1. Specify the segmentation mask directory with \`--inputfolder\`.
+2. Set the image directory using \`--targetfolder\`.
+3. If you have more than 3 segmentation mask label classes, update channel configurations in \`train.py\`, \`datasets.py\`, and \`utils/dtypes.py\`.
+
+## 🎓 Training 
+
+Specify dataset paths using \`--inputfolder\` and \`--targetfolder\`:
+
+- **Image Dimensions**: 128x128x128
 
 ```
-$ ./scripts/generate128.sh
+$ ./scripts/train.sh
 ```
 
-## Citation
+## 🧠 Model Weights
 
-To cite our work, please use
+Access our optimized model weights using the link below:
+
+[Download Model Weights](https://drive.google.com/file/d/1cy1uPjA7PEcL3FDf2-weprWvLSJoJf_n/view?usp=sharing)
+
+After downloading, place the file under the "model" directory.
+
+## 🎨 Generate Samples
+
+To produce images, follow the script below:
+
+- **Image Dimensions**: 128x128x128
+- Set the learned weight file path with \`--weightfile\`.
+- Determine the input mask file using \`--inputfolder\`.
 
 ```
-@misc{,
-  doi = {},
+$ ./scripts/sample.sh
+```
+
+## 📋 ToDo List
+
+Your contributions to Med-DDPM are valuable! Here's our ongoing task list:
+
+- [x] Main model code release
+- [x] Release model weights 
+- [x] Implement fast sampling feature
+- [ ] Release 4 modality model code & weights
+- [ ] Deploy model on HuggingFace for broader reach
+- [ ] Draft & release a comprehensive tutorial blog
+- [ ] Launch a Docker image
+
+## 📜 Citation
+
+If our work assists your research, kindly cite us:
+
+```
+@misc{https://doi.org/10.48550/arxiv.2305.18453,
+  doi = {10.48550/ARXIV.2305.18453},
   url = {https://arxiv.org/abs/2305.18453},
-  author = {Zolnamar Dorjsembe, Hsing-Kuo Pao, Sodtavilan Odonchimed, Furen Xiao},
+  author = {Zolnamar Dorjsembe and Hsing-Kuo Pao and Sodtavilan Odonchimed and Furen Xiao},
   title = {Conditional Diffusion Models for Semantic 3D Medical Image Synthesis},
   publisher = {arXiv},
-  year = {2022},
+  year = {2023},
 }
+```
+
+## 💡 Acknowledgements
+
+Gratitude to these foundational repositories:
+
+1. [denoising-diffusion-pytorch](https://github.com/lucidrains/denoising-diffusion-pytorch)
+2. [guided-diffusion](https://github.com/openai/guided-diffusion)
+
+
+```python
+
 ```
