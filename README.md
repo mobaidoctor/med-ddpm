@@ -70,11 +70,11 @@ whole-head MRI synthesis:$ ./scripts/train.sh
 
 ## 🧠 Model Weights
 
-Access our optimized model weights using the link below:
+Get our optimized model weights for both whole-head MRI synthesis and 4-modalities MRI synthesis from the link below:
 
-[Download Model Weights](https://drive.google.com/file/d/1cy1uPjA7PEcL3FDf2-weprWvLSJoJf_n/view?usp=sharing)
+[Download Model Weights](https://drive.google.com/drive/folders/1t6jk5MrKt34JYClgfijlbNYePIcTEQvJ?usp=sharing)
 
-After downloading, place the file under the "model" directory.
+After downloading, place the files under the "model" directory.
 
 ## 🎨 Generating Samples
 
