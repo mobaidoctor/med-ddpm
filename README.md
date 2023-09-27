@@ -1,8 +1,13 @@
-# Med-DDPM: Conditional Diffusion Models for Semantic 3D Medical Image Synthesis
+<!-- #region -->
+# Med-DDPM: Conditional Diffusion Models for Semantic 3D Medical Image Synthesis (Whole-Head MRI & 4 Modalities MRI)
+
 
 [[Paper](https://arxiv.org/pdf/2305.18453.pdf)]
 
-This repository houses the official implementation and pretrained model weights for our paper titled "Conditional Diffusion Models for Semantic 3D Medical Image Synthesis". Our work focuses on utilizing diffusion models to generate realistic and high-quality 3D medical images while preserving semantic information.
+This repository contains the official implementation and pretrained model weights for our paper titled "Conditional Diffusion Models for Semantic 3D Medical Image Synthesis." Our research focuses on the utilization of diffusion models to generate realistic and high-quality 3D medical images while preserving semantic information. We trained our proposed method on both whole-head MRI and brain-extracted 4 modalities MRIs (<a href="http://braintumorsegmentation.org/">BraTS2021</a>).
+
+For the generation of the 4 modalities (T1, T1ce, T2, Flair), we trained this model using a selected set of 193 high-quality images from the BraTS2021 dataset. We have made our pretrained model weights available for download. Please feel free to use them for further research, and if you use our code or pretrained weights, kindly cite our paper.
+
 
 ## Synthetic Samples for Given Input Mask:
 
@@ -28,7 +33,7 @@ This repository houses the official implementation and pretrained model weights 
     </td>
   </tr>
 </table>
-
+<!-- #endregion -->
 
 ## 🛠️ Setup 
 
@@ -53,10 +58,14 @@ Med-DDPM is versatile. If you're working with image formats other than NIfTI (.n
 
 Specify dataset paths using \`--inputfolder\` and \`--targetfolder\`:
 
-- **Image Dimensions**: 128x128x128
+### Image Dimensions
+
+- Whole-head MRI synthesis: 128x128x128
+- Brain-extracted 4 modalities (T1, T1ce, T2, Flair) synthesis (BraTS2021): 192x192x144
 
 ```
-$ ./scripts/train.sh
+whole-head MRI synthesis:$ ./scripts/train.sh
+(BraTS) 4 modalities MRI synthesis:$ ./scripts/train_brats.sh
 ```
 
 ## 🧠 Model Weights
@@ -67,16 +76,23 @@ Access our optimized model weights using the link below:
 
 After downloading, place the file under the "model" directory.
 
-## 🎨 Generate Samples
+## 🎨 Generating Samples
 
-To produce images, follow the script below:
+To create images, follow these steps:
 
-- **Image Dimensions**: 128x128x128
+### Image Dimensions
+
+- Whole-head MRI synthesis: 128x128x128
+- Brain-extracted 4 modalities (T1, T1ce, T2, Flair) synthesis (BraTS2021): 192x192x144
+
+### Usage
+
 - Set the learned weight file path with \`--weightfile\`.
 - Determine the input mask file using \`--inputfolder\`.
 
 ```
-$ ./scripts/sample.sh
+whole-head MRI synthesis:$ ./scripts/sample.sh
+(BraTS) 4 modalities MRI synthesis:$ ./scripts/sample_brats.sh
 ```
 
 ## 📋 ToDo List
@@ -86,7 +102,7 @@ Your contributions to Med-DDPM are valuable! Here's our ongoing task list:
 - [x] Main model code release
 - [x] Release model weights 
 - [x] Implement fast sampling feature
-- [ ] Release 4 modality model code & weights
+- [x] Release 4 modality model code & weights
 - [ ] Deploy model on HuggingFace for broader reach
 - [ ] Draft & release a comprehensive tutorial blog
 - [ ] Launch a Docker image

@@ -16,7 +16,7 @@ os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-i', '--inputfolder', type=str, default="dataset/mask")
+parser.add_argument('-i', '--inputfolder', type=str, default="dataset/whole_head/mask")
 parser.add_argument('-e', '--exportfolder', type=str, default="exports/")
 parser.add_argument('--input_size', type=int, default=128)
 parser.add_argument('--depth_size', type=int, default=128)
