@@ -1,5 +1,5 @@
 <!-- #region -->
-# Med-DDPM: Conditional Diffusion Models for Semantic 3D Medical Image Synthesis (Whole-Head MRI & 4 Modalities MRI)
+# Med-DDPM: Conditional Diffusion Models for Semantic 3D Brain MRI Synthesis (Whole-Head MRI & 4 Modalities Brain MRIs)
 
 
 [[Paper](https://arxiv.org/pdf/2305.18453.pdf)]
