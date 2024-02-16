@@ -113,7 +113,7 @@ class GaussianDiffusion(nn.Module):
         depth_size,
         channels = 1,
         timesteps = 1000,
-        loss_type = 'hybrid',
+        loss_type = 'l1',
         betas = None,
         with_condition = False,
         with_pairwised = False,
@@ -276,10 +276,6 @@ class GaussianDiffusion(nn.Module):
             loss = (noise - x_recon).abs().mean()
         elif self.loss_type == 'l2':
             loss = F.mse_loss(x_recon, noise)
-        elif self.loss_type == 'hybrid':
-            loss1 = (noise - x_recon).abs().mean()
-            loss2 = F.mse_loss(x_recon, noise)
-            loss = loss1 + 0.5 * loss2
         else:
             raise NotImplementedError()
 

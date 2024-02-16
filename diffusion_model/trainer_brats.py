@@ -279,11 +279,6 @@ class GaussianDiffusion(nn.Module):
             loss = (noise - x_recon).abs().mean()
         elif self.loss_type == 'l2':
             loss = F.mse_loss(x_recon, noise)
-        elif self.loss_type == 'hybrid':
-            loss1 = (noise - x_recon).abs().mean()
-#             loss2 = F.mse_loss(x_recon, noise)
-            loss2 = F.binary_cross_entropy_with_logits(x_recon, noise)
-            loss = loss1 *100 + loss2
         else:
             raise NotImplementedError()
 

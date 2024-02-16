@@ -23,7 +23,7 @@ parser.add_argument('--depth_size', type=int, default=144)
 parser.add_argument('--num_channels', type=int, default=64)
 parser.add_argument('--num_res_blocks', type=int, default=2)
 parser.add_argument('--batchsize', type=int, default=1)
-parser.add_argument('--epochs', type=int, default=10000000)
+parser.add_argument('--epochs', type=int, default=100000) # epochs parameter specifies the number of training iterations
 parser.add_argument('--timesteps', type=int, default=250)
 parser.add_argument('--save_and_sample_every', type=int, default=1000)
 parser.add_argument('--with_condition', action='store_true')
@@ -83,7 +83,7 @@ diffusion = GaussianDiffusion(
     image_size = input_size,
     depth_size = depth_size,
     timesteps = args.timesteps,   # number of steps
-    loss_type = 'hybrid',    # L1 or L2
+    loss_type = 'l1',    # L1 or L2
     with_condition=with_condition,
     channels=out_channels
 ).cuda()
