@@ -7,6 +7,15 @@ import os
 from tqdm import tqdm
 import torchio as tio
 
+# mapping brats2023 to brats 2021
+MODALITY_MAPPING = {
+    "t1n": "t1",
+    "t1c": "t1ce",
+    "t2w": "t2",
+    "t2f": "flair",
+    "seg": "seg"
+}
+
 def parse_args():
     parser = argparse.ArgumentParser(description="Preprocess MRI datasets.")
     parser.add_argument("--data_dir", type=str, required=True, help="Directory containing the dataset")
@@ -26,7 +35,9 @@ def create_dirs(output_dir):
     return dirs
 
 def load_data_list(data_dir, modality):
-    return sorted(glob.glob(os.path.join(data_dir, "*", f"*_{modality}.nii.gz")))
+    file_list = sorted(glob.glob(os.path.join(data_dir, "*", f"*-{modality}.nii.gz")))
+    print(f"Loading {modality} files: {len(file_list)} found")
+    return file_list
 
 def preprocess_and_save(subject, output_dirs, img_names):
     for modality, img in subject.items():
@@ -48,12 +59,13 @@ def main():
     args = parse_args()
     output_dirs = create_dirs(args.output_dir)
 
-    modalities = ["t1", "t1ce", "t2", "flair", "seg"]
-    data_lists = {modality: load_data_list(args.data_dir, modality) for modality in modalities}
+    #using internal modality dictionary
+    internal_modalities = list(MODALITY_MAPPING.values())
+    data_lists = {MODALITY_MAPPING[modality]: load_data_list(args.data_dir, modality) for modality in MODALITY_MAPPING}
     
     # Preprocess and crop
     for idx in tqdm(range(len(data_lists["t1"]))):
-        img_names = {modality: os.path.basename(data_lists[modality][idx]) for modality in modalities}
+        img_names = {modality: os.path.basename(data_lists[modality][idx]) for modality in internal_modalities}
         subject = tio.Subject(
             t1_img=tio.ScalarImage(data_lists["t1"][idx]),
             t1ce_img=tio.ScalarImage(data_lists["t1ce"][idx]),
