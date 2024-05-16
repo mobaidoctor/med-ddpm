@@ -2,9 +2,9 @@
 # Med-DDPM: Conditional Diffusion Models for Semantic 3D Brain MRI Synthesis (Whole-Head MRI & 4 Modalities Brain MRIs)
 
 
-[[Paper](https://arxiv.org/pdf/2305.18453.pdf)]
+[[Preprint on ArXiv](https://arxiv.org/pdf/2305.18453.pdf)] | [[Early Access on IEEE Xplore](https://ieeexplore.ieee.org/document/10493074)] 
 
-This repository contains the official implementation and pretrained model weights for our paper titled "Conditional Diffusion Models for Semantic 3D Medical Image Synthesis." Our research focuses on the utilization of diffusion models to generate realistic and high-quality 3D medical images while preserving semantic information. We trained our proposed method on both whole-head MRI and brain-extracted 4 modalities MRIs (<a href="http://braintumorsegmentation.org/">BraTS2021</a>).
+This repository hosts the official PyTorch implementation and pretrained model weights for our paper, "Conditional Diffusion Models for Semantic 3D Brain MRI Synthesis," which has been accepted for publication in the IEEE Journal of Biomedical and Health Informatics. Our research focuses on the utilization of diffusion models to generate realistic and high-quality 3D medical images while preserving semantic information. We trained our proposed method on both whole-head MRI and brain-extracted 4 modalities MRIs (<a href="http://braintumorsegmentation.org/">BraTS2021</a>).
 
 For the generation of the 4 modalities (T1, T1ce, T2, Flair), we trained this model using a selected set of 193 high-quality images from the BraTS2021 dataset. We have made our pretrained model weights available for download. Please feel free to use them for further research, and if you use our code or pretrained weights, kindly cite our paper.
 
@@ -110,6 +110,18 @@ Your contributions to Med-DDPM are valuable! Here's our ongoing task list:
 ## 📜 Citation
 
 If our work assists your research, kindly cite us:
+```
+@ARTICLE{10493074,
+  author={Dorjsembe, Zolnamar and Pao, Hsing-Kuo and Odonchimed, Sodtavilan and Xiao, Furen},
+  journal={IEEE Journal of Biomedical and Health Informatics}, 
+  title={Conditional Diffusion Models for Semantic 3D Brain MRI Synthesis}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={1-10},
+  keywords={Three-dimensional displays;Brain modeling;Biomedical imaging;Solid modeling;Image segmentation;Magnetic resonance imaging;Adaptation models;Conditional diffusion models;semantic image synthesis;generative models;anonymization;data augmentation},
+  doi={10.1109/JBHI.2024.3385504}}
+```
 
 ```
 @misc{https://doi.org/10.48550/arxiv.2305.18453,
