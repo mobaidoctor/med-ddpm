@@ -119,7 +119,6 @@ If our work assists your research, kindly cite us:
   volume={},
   number={},
   pages={1-10},
-  keywords={Three-dimensional displays;Brain modeling;Biomedical imaging;Solid modeling;Image segmentation;Magnetic resonance imaging;Adaptation models;Conditional diffusion models;semantic image synthesis;generative models;anonymization;data augmentation},
   doi={10.1109/JBHI.2024.3385504}}
 ```
 
