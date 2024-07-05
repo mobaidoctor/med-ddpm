@@ -116,21 +116,10 @@ If our work assists your research, kindly cite us:
   journal={IEEE Journal of Biomedical and Health Informatics}, 
   title={Conditional Diffusion Models for Semantic 3D Brain MRI Synthesis}, 
   year={2024},
-  volume={},
-  number={},
-  pages={1-10},
+  volume={28},
+  number={7},
+  pages={4084-4093},
   doi={10.1109/JBHI.2024.3385504}}
-```
-
-```
-@misc{https://doi.org/10.48550/arxiv.2305.18453,
-  doi = {10.48550/ARXIV.2305.18453},
-  url = {https://arxiv.org/abs/2305.18453},
-  author = {Zolnamar Dorjsembe and Hsing-Kuo Pao and Sodtavilan Odonchimed and Furen Xiao},
-  title = {Conditional Diffusion Models for Semantic 3D Medical Image Synthesis},
-  publisher = {arXiv},
-  year = {2023},
-}
 ```
 
 ## 💡 Acknowledgements
