@@ -25,8 +25,11 @@ def create_dirs(output_dir):
         os.makedirs(dir_path, exist_ok=True)
     return dirs
 
-def load_data_list(data_dir, modality):
-    return sorted(glob.glob(os.path.join(data_dir, "*", f"*_{modality}.nii.gz")))
+def load_data_list(data_dir, modality, finalProcessing):
+    if finalProcessing:
+        return sorted(glob.glob(os.path.join(data_dir, modality, f"*_{modality}.nii.gz")))
+    else:
+        return sorted(glob.glob(os.path.join(data_dir, "*", f"*_{modality}.nii.gz")))
 
 def preprocess_and_save(subject, output_dirs, img_names):
     for modality, img in subject.items():
@@ -40,7 +43,7 @@ def preprocess_seg(t1, seg_path, affine):
     img = nib.load(t1).get_fdata()
     seg = nib.load(seg_path).get_fdata().astype(np.uint8)
     seg[seg == 4] = 3
-    img[img > 0.] = 4.
+    img[img > -1] = 4.
     seg = np.where(seg == 0, img, seg)
     nib.save(nib.Nifti1Image(seg, affine), seg_path)
 
@@ -49,7 +52,7 @@ def main():
     output_dirs = create_dirs(args.output_dir)
 
     modalities = ["t1", "t1ce", "t2", "flair", "seg"]
-    data_lists = {modality: load_data_list(args.data_dir, modality) for modality in modalities}
+    data_lists = {modality: load_data_list(args.data_dir, modality, False) for modality in modalities}
     
     # Preprocess and crop
     for idx in tqdm(range(len(data_lists["t1"]))):
@@ -64,6 +67,9 @@ def main():
         transform = tio.CropOrPad((192, 192, 144))
         subject = transform(subject)
         preprocess_and_save(subject, output_dirs, img_names)
+    
+    # Update the path to the output directory where the preprocessed images are saved
+    data_lists = {modality: load_data_list(args.output_dir, modality, True) for modality in modalities}
     
     # Preprocess mask separately
     for t1_path, seg_path in tqdm(zip(data_lists["t1"], data_lists["seg"])):
