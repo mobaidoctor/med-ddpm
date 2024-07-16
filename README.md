@@ -2,7 +2,7 @@
 # Med-DDPM: Conditional Diffusion Models for Semantic 3D Brain MRI Synthesis (Whole-Head MRI & 4 Modalities Brain MRIs)
 
 
-[[Preprint on ArXiv](https://arxiv.org/pdf/2305.18453.pdf)] | [[Early Access on IEEE Xplore](https://ieeexplore.ieee.org/document/10493074)] 
+[[Preprint on ArXiv](https://arxiv.org/pdf/2305.18453.pdf)] | [[Paper on IEEE Xplore](https://ieeexplore.ieee.org/document/10493074)] 
 
 This repository hosts the official PyTorch implementation and pretrained model weights for our paper, "Conditional Diffusion Models for Semantic 3D Brain MRI Synthesis," which has been accepted for publication in the IEEE Journal of Biomedical and Health Informatics. Our research focuses on the utilization of diffusion models to generate realistic and high-quality 3D medical images while preserving semantic information. We trained our proposed method on both whole-head MRI and brain-extracted 4 modalities MRIs (<a href="http://braintumorsegmentation.org/">BraTS2021</a>).
 
